@@ -1,0 +1,13 @@
+<div style="padding: 50px;" ng-cloak>
+    <h1>Customers App</h1>
+
+    <add-customers-form></add-customers-form>
+
+    <br><br>
+
+    <div ng-if="customers.length ? customers : ''">
+        <customers-list></customers-list>
+
+        <div ui-view></div>
+    </div>
+</div>

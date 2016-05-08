@@ -1,0 +1,43 @@
+<br>
+<hr>
+<br>
+
+<div>
+    <input type="text" placeholder="Product Name" ng-model="productName">
+    <input type="number" placeholder="Quantity" ng-model="quantity">
+    <input type="number" placeholder="Price" ng-model="productPrice">
+
+    <button type="button" ng-click="clearOrder()">Clear</button>
+    <button type="button" ng-click="saveOrder()">Save</button>
+
+    <br>
+
+    {{errorMsgOrders}}
+</div>
+
+<div>
+    <h3>Costomer Orders</h3>
+
+    <table width="100%">
+        <tr>
+            <th></th>
+            <th align="right">Product</th>
+            <th align="right">Quantity</th>
+            <th align="right">Price</th>
+            <th align="right">Total</th>
+        </tr>
+        <tr ng-repeat="order in customerOrdersArr track by $index">
+            <td align="right">
+                <button type="button" ng-click="editOrder(order.id)">Edit</button>
+                <button type="button" ng-click="deleteOrder(order.id)">Delete</button>
+            </td>
+            <td align="right">{{order.product}}</td>
+            <td align="right">{{order.quantity}}</td>
+            <td align="right">{{order.price | currency}}</td>
+            <td align="right">{{order.quantity * order.price | currency}}</td>
+        </tr>
+        <tr>
+            <td colspan="5" align="right" style="font-weight: bold;">{{totalPrice | currency}}</td>
+        </tr>
+    </table>
+</div>

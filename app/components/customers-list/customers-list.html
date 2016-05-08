@@ -1,0 +1,22 @@
+<hr>
+<br>
+<div>
+    <ul>
+        <li ng-repeat="customer in customers track by $index">
+            <button type="button" ng-click="editCustomer(customer.id)">Edit</button>
+            <button type="button" ng-click="deleteCustomer(customer.id)">Delete</button>
+            &nbsp;&nbsp;&nbsp;
+            <span style="font-size: 18px; font-weight: bold;">{{customer.firstName}}</span>
+            &nbsp;
+            <span style="font-size: 18px; font-weight: bold;">{{customer.lastName}}</span>
+            &nbsp;&nbsp;&nbsp;
+            |
+            &nbsp;&nbsp;&nbsp;
+            {{customer.city}}
+            &nbsp;&nbsp;&nbsp;
+            |
+            &nbsp;&nbsp;&nbsp;
+            <a href="#/orders/{{customer.id}}">{{customer.orders.length}} orders</a>
+        </li>
+    </ul>
+</div>

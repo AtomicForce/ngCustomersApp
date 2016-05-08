@@ -1,0 +1,25 @@
+<div>
+    <label>First Name:</label>
+    <br>
+    <input type="text" placeholder="First Name" ng-model="firstName">
+
+    <br><br>
+
+    <label>Last Name:</label>
+    <br>
+    <input type="text" placeholder="Last Name" ng-model="lastName">
+
+    <br><br>
+
+    <label>City:</label>
+    <br>
+    <input type="text" placeholder="Customer City" ng-model="city">
+
+    <br><br>
+
+    {{errorMsg}}
+
+    <br><br>
+    <button type="button" ng-click="saveCustomer()">Save</button>
+    <button type="button" ng-click="clearCustomerInfo()">Clear</button>
+</div>

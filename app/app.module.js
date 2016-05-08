@@ -1,16 +1,26 @@
 angular.module('gdansk-training', [
-    'gt.components.bookmark-app',
-    'gt.components.add-bookmark-form',
-    'gt.components.bookmark-list',
-    'gt.components.bookmark-tags',
+    'gt.components.customers-app',
+    'gt.components.add-customers-form',
+    'gt.components.customers-list',
+    'gt.components.customer-orders',
     'mongolab-factory',
     'gdanskTraining.templates',
-    'gdanskTraining-constant'
-]).config(function (mongolabFactoryProvider) {
+    'gdanskTraining-constant',
+    'ui.router'
+]).config(function(mongolabFactoryProvider, $stateProvider, $urlRouterProvider) {
     mongolabFactoryProvider.setConfigs({
-        dataBase: 'bookmarks-app',
+        dataBase: 'customers-app',
         apiKey: 'Xdh27t0ATpYntQE8kxQcvIkLZzPaOb6Z'
     });
+
+    $urlRouterProvider.otherwise('/');
+
+    $stateProvider
+        .state('orders', {
+            url: '/orders/:customerId',
+            template: '<customer-orders></customer-orders>'
+        });
+
 }).run(function ( $log, gdanskTrainingVersion, $rootScope ) {
     $rootScope.field1 = 'root';
     if ( !gdanskTrainingVersion ) { return; }
