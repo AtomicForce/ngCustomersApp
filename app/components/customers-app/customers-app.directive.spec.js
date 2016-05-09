@@ -1,6 +1,6 @@
-describe('gt.components.bookmark-app', function () {
+describe('gt.components.customers-app', function () {
     var object;
-    beforeEach(module('gt.components.bookmark-app', function($provide) {
+    beforeEach(module('gt.components.customers-app', function($provide) {
         object = [{ name: 'value' }];
         $provide.factory('mongolabFactory', function($q) {
             return {
@@ -15,22 +15,10 @@ describe('gt.components.bookmark-app', function () {
 
     var directive;
     beforeEach(inject(function ($compile, $rootScope, directiveBuilder) {
-        directive = directiveBuilder.$build('<bookmark-app></bookmark-app>');
+        directive = directiveBuilder.$build('<customers-app></customers-app>');
     }));
 
-    it('tagsMap should be empty', function () {
-        var scope = directive.element.isolateScope();
-
-        expect(scope.tagsMap).toEqual({});
-    });
-
-    it('filter should be empty', function () {
-        var scope = directive.element.isolateScope();
-        scope.filterResults();        
-    });
-
-    it('editBookmarkCtr should be called', function () {
-        var scope = directive.element.isolateScope();
-        scope.ctrl.editBookmarkCtr();
+    it('element should not be null', function () {
+        expect(directive.element).toBeTruthy();
     });
 });

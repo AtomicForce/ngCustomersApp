@@ -1,5 +1,5 @@
 angular.module('gt.components.customer-orders', [])
-.directive('customerOrders', function (mongolabFactory) {
+.directive('customerOrders', function(mongolabFactory) {
     return {
         templateUrl: 'app/components/customer-orders/customer-orders.html',
         link: function($scope, $element, $attr) {

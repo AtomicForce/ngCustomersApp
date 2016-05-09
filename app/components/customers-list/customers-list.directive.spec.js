@@ -1,6 +1,6 @@
-describe('gt.components.bookmark-list', function () {
+describe('gt.components.customers-list', function () {
     var object;
-    beforeEach(module('gt.components.bookmark-list', function($provide) {
+    beforeEach(module('gt.components.customers-list', function($provide) {
         object = [{ name: 'value' }];
         $provide.factory('mongolabFactory', function($q) {
             return {
@@ -15,55 +15,14 @@ describe('gt.components.bookmark-list', function () {
 
     var directive;
     beforeEach(inject(function ($compile, $rootScope, directiveBuilder) {
-        directive = directiveBuilder.$build('<bookmark-list></bookmark-list>', {}, {bookmarkApp:{
-            editBookmarkCtr: function() {
+        directive = directiveBuilder.$build('<customers-list></customers-list>', {}, {customersApp:{
+            editCustomerCtr: function() {
 
             }
         }});
     }));
 
-    it('editBookmark should be called', function () {
-        var scope = directive.scope;
-        scope.editBookmark();
-    });
-
-    it('filterTags should be called', function () {
-        var scope = directive.scope;
-        scope.filterTags({
-            title: 'test',
-            url: 'test',
-            tags: ['test','test']
-        });
-    });
-
-    it('filterTags should be called with filter=none', function () {
-        var scope = directive.scope;
-        scope.filter = 'none';
-        expect(scope.filterTags({
-            title: 'test',
-            url: 'test',
-            tags: ['test','test']
-        })).toEqual({
-            title: 'test',
-            url: 'test',
-            tags: ['test','test']
-        });
-    });
-
-    it('deleteBookmark should be called', function () {
-        var scope = directive.scope;
-        scope.bookmarks = [
-            {
-                id: 0,
-                _id: {
-                    $oid: ''
-                },
-                title: 'test',
-                url: 'test',
-                tags: ['test','test']
-            }
-        ];
-
-        scope.deleteBookmark(0);
+    it('element should not be null', function () {
+        expect(directive.element).toBeTruthy();
     });
 });

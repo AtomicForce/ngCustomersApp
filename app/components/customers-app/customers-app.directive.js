@@ -1,5 +1,5 @@
-angular.module('gt.components.customers-app', ['getQueryParameter-service', 'mongolab-factory'])
-.directive('customersApp', function (getQueryParameter, mongolabFactory, $timeout) {
+angular.module('gt.components.customers-app', ['mongolab-factory'])
+.directive('customersApp', function (mongolabFactory, $timeout) {
     return {
         templateUrl: 'app/components/customers-app/customers-app.html',
         scope: {},
@@ -14,17 +14,9 @@ angular.module('gt.components.customers-app', ['getQueryParameter-service', 'mon
         link: function ($scope, $element, $attr) {
             $scope.edit = [];
 
-            $scope.filter = getQueryParameter('filter') || 'none';
-
             mongolabFactory.query().$promise.then(function(data) {
                 $scope.customers = data;
             });
-
-            $scope.filterResults = function() {
-                $timeout(function () {
-                    $scope.filter = getQueryParameter('filter');
-                });
-            };
         }
     };
 });
