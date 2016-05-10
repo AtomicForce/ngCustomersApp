@@ -25,4 +25,22 @@ describe('gt.components.customers-list', function () {
     it('element should not be null', function () {
         expect(directive.element).toBeTruthy();
     });
+
+    it('deleteCustomer should be called', function () {
+        var scope = directive.scope;
+        scope.customers = [
+            {
+                _id: {
+                    $oid: ''
+                },
+                id: 0,
+                firstName: '',
+                lastName: '',
+                city: '',
+                orders: []
+            }
+        ];
+
+        scope.deleteCustomer(0);
+    });
 });

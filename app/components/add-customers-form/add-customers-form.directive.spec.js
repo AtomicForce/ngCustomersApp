@@ -28,4 +28,29 @@ describe('gt.components.add-customers-form', function () {
     it('element should not be null', function () {
         expect(directive.element).toBeTruthy();
     });
+
+    it('saveCustomer should save new customer', function () {
+        var scope = directive.scope;
+        scope.customers = [
+            {
+                id: 0,
+                firstName: '',
+                lastName: '',
+                city: '',
+                orders: []
+            }
+        ];
+
+        scope.firstName = 'a';
+        scope.lastName = 'a';
+        scope.city = 'a';
+        scope.editingBookmarkId = null;
+        scope.saveCustomer();
+    });
+
+    it('clearCustomerInfo should clear the form', function () {
+        var scope = directive.scope;
+
+        scope.clearCustomerInfo();
+    });
 });

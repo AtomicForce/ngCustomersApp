@@ -4,8 +4,8 @@ angular.module('gt.components.customer-orders', [])
         templateUrl: 'app/components/customer-orders/customer-orders.html',
         link: function($scope, $element, $attr) {
             var urlArr = window.location.hash.split('/');
-            var customerId = urlArr[urlArr.length - 1];
-
+            var customerId = urlArr.length - 1 ? urlArr[urlArr.length - 1] : 0;
+            $scope.editingOrderId = null;
             $scope.totalPrice = 0;
             $scope.customerOrdersArr = $scope.customers[customerId].orders;
             $scope.customerOrdersArr.forEach(function(order) {
@@ -62,7 +62,7 @@ angular.module('gt.components.customer-orders', [])
                 } else {
                     $scope.errorMsgOrders = "Please fill all fields!";
                 }
-            }
+            };
 
             $scope.clearOrder = function() {
                 $scope.productName = '';
